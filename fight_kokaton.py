@@ -168,8 +168,10 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     bird = Bird((300, 200))
     bombs = pg.sprite.Group(Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS))
-    beams = pg.sprite.Group()
     score = Score()
+    beams = pg.sprite.Group()
+
+
 
     clock = pg.time.Clock()
     tmr = 0
@@ -180,11 +182,15 @@ def main():
                 return
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 beams.add(Beam(bird))
+                print(beams)
 
         screen.blit(bg_img, [0, 0])
 
         if pg.sprite.spritecollide(bird, bombs, False):
             bird.change_img(8, screen)
+            fonto = pg.font.Font(None, 80)
+            txt = fonto.render("Game Over", True, (255, 0, 0))
+            screen.blit(txt, [WIDTH//2-150, HEIGHT//2])
             pg.display.update()
             time.sleep(1)
             return
