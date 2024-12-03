@@ -183,7 +183,7 @@ class Explosion(pg.sprite.Sprite):
         if self.life < 0:
             self.kill()
 
-def main():
+def main():#すべてのクラスを使う関数
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     bg_img = pg.image.load("fig/pg_bg.jpg")
